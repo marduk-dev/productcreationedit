@@ -1,0 +1,39 @@
+services:
+  _defaults:
+    public: true
+
+  marduk.module.product_creation_edit.controller.configuration:
+    class: 'Marduk\Module\ProductCreationEdit\Controller\ProductCreationEditConfigurationController'
+
+  marduk.module.product_creation_edit.form.type.configuration_form:
+    class: 'Marduk\Module\ProductCreationEdit\Form\ProductCreationEditFormType'
+    parent: 'form.type.translatable.aware'
+    public: true
+    tags:
+      - { name: form.type }
+
+  marduk.module.product_creation_edit.form.configuration_data:
+    class: Marduk\Module\ProductCreationEdit\Form\ProductCreationEditDataConfiguration
+    arguments:
+      - '@prestashop.adapter.legacy.configuration'
+
+  marduk.module.product_creation_edit.form.configuration_provider:
+    class: 'Marduk\Module\ProductCreationEdit\Form\ProductCreationEditDataProvider'
+    arguments:
+      - '@marduk.module.product_creation_edit.form.configuration_data'
+
+  marduk.module.product_creation_edit.form.configuration_handler:
+    class: 'PrestaShop\PrestaShop\Core\Form\Handler'
+    arguments:
+      - '@form.factory'
+      - '@prestashop.core.hook.dispatcher'
+      - '@marduk.module.product_creation_edit.form.configuration_provider'
+      - 'Marduk\Module\ProductCreationEdit\Form\ProductCreationEditFormType'
+      - 'ProductCreationEdit'
+      - 'index'
+
+  marduk.module.product_creation_edit.controller.cloning_updater:
+    class: 'Marduk\Module\ProductCreationEdit\Controller\CloningUpdater'
+    arguments:
+      - '@PrestaShop\PrestaShop\Adapter\Product\Repository\ProductRepository'
+      - '@marduk.module.product_creation_edit.form.configuration_data'

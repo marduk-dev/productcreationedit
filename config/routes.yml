@@ -1,0 +1,7 @@
+productcreationedit_configuration_route:
+  path: productcreationedit/configuration
+  methods: [GET, POST]
+  defaults:
+    _controller: 'marduk.module.product_creation_edit.controller.configuration::index'
+    _legacy_controller: ProductCreationEditConfigurationController
+    _legacy_link: ProductCreationEditConfigurationController
