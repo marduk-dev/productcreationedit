@@ -7,7 +7,6 @@ namespace Marduk\Module\ProductCreationEdit\Controller;
 use PrestaShopBundle\Controller\Admin\FrameworkBundleAdminController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Form\FormFactoryInterface as FFI;
 use PrestaShop\PrestaShop\Core\Form\Handler;
 
 class ProductCreationEditConfigurationController extends FrameworkBundleAdminController
@@ -15,7 +14,6 @@ class ProductCreationEditConfigurationController extends FrameworkBundleAdminCon
 
   public function index(Request $request): Response
   {
-    $dataHandler = null;//$this->dataHandler;//getConfigurationFormHandler();
     $dataHandler = $this->getConfigurationFormHandler();
 
     $textForm = $dataHandler->getForm();

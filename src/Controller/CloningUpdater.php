@@ -13,8 +13,8 @@ use PrestaShop\PrestaShop\Core\Domain\Product\Exception\CannotUpdateProductExcep
 
 class CloningUpdater
 {
-  private $productRepository;
-  private $productCreationEditDataConfiguration;
+  private ProductRepository $productRepository;
+  private ProductCreationEditDataConfiguration $productCreationEditDataConfiguration;
 
   public function __construct(ProductRepository $productRepository, DataConfigurationInterface $productCreationEditDataConfiguration) {
     $this->productRepository = $productRepository;

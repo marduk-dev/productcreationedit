@@ -5,7 +5,6 @@ namespace Marduk\Module\ProductCreationEdit\Form;
 
 use PrestaShop\PrestaShop\Core\Configuration\DataConfigurationInterface;
 use PrestaShop\PrestaShop\Core\ConfigurationInterface;
-use Exception;
 
 /**
  * Configuration is used to save data to configuration table and retrieve from it.
